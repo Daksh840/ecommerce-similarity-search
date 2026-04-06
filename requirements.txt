@@ -1,0 +1,42 @@
+# =============================================================================
+# E-Commerce Similarity Search — Python Dependencies
+# =============================================================================
+# Core: FastAPI + Uvicorn (API server)
+# ML:   PyTorch + torchvision (ResNet50 feature extraction)
+# Search: FAISS (vector similarity search)
+# =============================================================================
+
+# --- Core Framework ---
+fastapi==0.135.3
+uvicorn==0.43.0
+pydantic==2.12.5
+pydantic-settings>=2.0.0
+python-multipart==0.0.22
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# --- ML / Deep Learning ---
+torch==2.2.1+cpu
+torchvision==0.17.1+cpu
+numpy<2.0.0
+pillow==12.1.1
+
+# --- Vector Search ---
+faiss-cpu==1.13.2
+
+# --- Data Processing ---
+pandas==3.0.2
+tqdm==4.67.3
+
+# --- HTTP Client (async, for URL-based search) ---
+httpx>=0.28.0
+requests==2.33.1
+
+# --- Caching (optional) ---
+redis>=5.0.0
+
+# --- Testing ---
+pytest==9.0.2
+
+# --- Utilities ---
+python-dotenv==1.2.2
