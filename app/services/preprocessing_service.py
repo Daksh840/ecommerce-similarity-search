@@ -71,7 +71,7 @@ class ImagePreprocessor:
         except ImageValidationError:
             raise  # Re-raise validation errors as-is
         except Exception as e:
-            logger.error(f"Preprocessing failed: {e}")
+            logger.error("Preprocessing failed: %s", e)
             raise ImageProcessingError(
                 message="Image preprocessing failed",
                 detail=str(e)

@@ -6,7 +6,7 @@
 # =============================================================================
 
 # --- Stage 1: Builder ---
-FROM python:3.10-slim AS builder
+FROM python:3.12-slim AS builder
 
 WORKDIR /build
 
@@ -27,7 +27,7 @@ RUN python -c "from torchvision.models import resnet50, ResNet50_Weights; resnet
 
 
 # --- Stage 2: Runtime ---
-FROM python:3.10-slim AS runtime
+FROM python:3.12-slim AS runtime
 
 WORKDIR /app
 

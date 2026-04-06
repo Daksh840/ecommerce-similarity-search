@@ -80,9 +80,19 @@ def check_content_length(headers: dict, max_bytes: int = MAX_DOWNLOAD_BYTES) -> 
     Raises:
         ValueError: If content exceeds the limit
     """
-    content_length = headers.get("Content-Length") or headers.get("content-length")
+    # Case-insensitive lookup (plain dicts lose httpx's case-insensitivity)
+    content_length = None
+    for key, value in headers.items():
+        if key.lower() == "content-length":
+            content_length = value
+            break
+
     if content_length:
-        size = int(content_length)
+        try:
+            size = int(content_length)
+        except (ValueError, TypeError):
+            logger.warning("Malformed Content-Length header: %s", content_length)
+            return  # Can't validate — proceed with download
         if size > max_bytes:
             raise ValueError(
                 f"Response too large: {size / 1024 / 1024:.1f}MB "

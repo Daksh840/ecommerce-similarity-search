@@ -25,15 +25,13 @@ Design Decisions:
 
 import asyncio
 import hashlib
-import json
 import logging
 import threading
 from contextlib import asynccontextmanager
-from functools import partial
 from typing import Optional
 
+import faiss
 import httpx
-import numpy as np
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -197,6 +195,22 @@ async def embedding_extraction_handler(request, exc: EmbeddingExtractionError):
     )
 
 
+@app.exception_handler(IndexNotFoundError)
+async def index_not_found_handler(request, exc: IndexNotFoundError):
+    return JSONResponse(
+        status_code=404,
+        content={"error": exc.message, "detail": exc.detail},
+    )
+
+
+@app.exception_handler(IndexEmptyError)
+async def index_empty_handler(request, exc: IndexEmptyError):
+    return JSONResponse(
+        status_code=503,
+        content={"error": exc.message, "detail": exc.detail},
+    )
+
+
 # ---------------------------------------------------------------------------
 # Endpoints
 # ---------------------------------------------------------------------------
@@ -248,7 +262,7 @@ async def search_by_image(
             detail=f"Expected image file, got {file.content_type}",
         )
 
-    if similarity_search.index.ntotal == 0:
+    if not similarity_search or similarity_search.index.ntotal == 0:
         raise HTTPException(
             status_code=503,
             detail="Index is empty. Build the index first via POST /api/v1/index/build",
@@ -260,7 +274,7 @@ async def search_by_image(
 
     # 2-3. Preprocessing + embedding extraction are CPU-bound.
     # Wrap in run_in_executor to avoid blocking the asyncio event loop.
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     image = await loop.run_in_executor(
         None, image_preprocessor.validate_and_process, image_bytes
     )
@@ -328,7 +342,7 @@ async def search_by_url(
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-    if similarity_search.index.ntotal == 0:
+    if not similarity_search or similarity_search.index.ntotal == 0:
         raise HTTPException(
             status_code=503,
             detail="Index is empty. Build the index first.",
@@ -338,7 +352,8 @@ async def search_by_url(
     cache_key = ""
     if redis_client:
         url_hash = hashlib.sha256(image_url.encode()).hexdigest()
-        cache_key = f"search:url:{url_hash}:k{top_k}"
+        cat_suffix = f":cat:{category.lower()}" if category else ""
+        cache_key = f"search:url:{url_hash}:k{top_k}{cat_suffix}"
         try:
             cached = redis_client.get(cache_key)
             if cached:
@@ -372,7 +387,7 @@ async def search_by_url(
         )
 
     # Preprocess → embed → search (CPU-bound ops wrapped in executor)
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     image = await loop.run_in_executor(
         None, image_preprocessor.validate_and_process, resp.content
     )
@@ -503,14 +518,15 @@ async def build_index(background_tasks: BackgroundTasks):
     """
     global _build_in_progress
 
-    # Prevent concurrent builds
-    if _build_in_progress:
-        raise HTTPException(
-            status_code=409,
-            detail="Index build already in progress. Please wait.",
-        )
+    # Prevent concurrent builds — atomic check-and-set via lock
+    with _build_lock:
+        if _build_in_progress:
+            raise HTTPException(
+                status_code=409,
+                detail="Index build already in progress. Please wait.",
+            )
+        _build_in_progress = True
 
-    _build_in_progress = True
     background_tasks.add_task(_run_index_build)
 
     return IndexBuildResponse(
@@ -581,7 +597,6 @@ async def search_by_product_id(
 
     # Reconstruct the embedding vector from the FAISS index
     # (avoids needing the original image)
-    import faiss
     if faiss.get_num_gpus() > 0 and hasattr(similarity_search.index, "copyToCpu"):
         cpu_index = faiss.index_gpu_to_cpu(similarity_search.index)
     else:

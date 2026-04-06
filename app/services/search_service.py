@@ -374,9 +374,6 @@ class SimilaritySearch:
         ids_to_remove = set(index_ids)
         n_total = self.index.ntotal
 
-        if not ids_to_remove:
-            return
-
         # Get CPU index for reconstruction
         if faiss.get_num_gpus() > 0 and hasattr(self.index, "copyToCpu"):
             cpu_index = faiss.index_gpu_to_cpu(self.index)
@@ -388,7 +385,7 @@ class SimilaritySearch:
         all_vectors = cpu_index.reconstruct_n(0, n_total)
 
         # Filter: keep only vectors NOT in the removal set
-        keep_mask = [i not in ids_to_remove for i in range(n_total)]
+        keep_mask = np.array([i not in ids_to_remove for i in range(n_total)])
         keep_embeddings = all_vectors[keep_mask]
         keep_metadata = [
             self.metadata.get(i, {})

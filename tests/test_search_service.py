@@ -45,21 +45,7 @@ def tmp_index_dir():
     shutil.rmtree(path, ignore_errors=True)
 
 
-def make_random_vectors(n: int, dim: int, normalize: bool = True) -> np.ndarray:
-    """Generate random L2-normalized vectors (simulates real embeddings)."""
-    vectors = np.random.randn(n, dim).astype("float32")
-    if normalize:
-        norms = np.linalg.norm(vectors, axis=1, keepdims=True)
-        vectors = vectors / norms
-    return vectors
-
-
-def make_metadata(n: int):
-    """Generate dummy metadata for n products."""
-    return [
-        {"product_id": f"prod_{i}", "name": f"Product {i}", "category": "test"}
-        for i in range(n)
-    ]
+from tests.conftest import make_random_vectors, make_metadata
 
 
 # ── Index Creation ───────────────────────────────────────────────────────────
