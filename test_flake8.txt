@@ -1,0 +1,83 @@
+app\config.py:11:80: E501 line too long (83 > 79 characters)
+app\config.py:17:1: F401 'pydantic.Field' imported but unused
+app\config.py:50:80: E501 line too long (85 > 79 characters)
+app\core\logger.py:23:1: W293 blank line contains whitespace
+app\core\logger.py:31:80: E501 line too long (84 > 79 characters)
+app\core\logger.py:39:80: E501 line too long (88 > 79 characters)
+app\core\security.py:39:80: E501 line too long (83 > 79 characters)
+app\core\security.py:61:80: E501 line too long (81 > 79 characters)
+app\core\security.py:72:80: E501 line too long (85 > 79 characters)
+app\core\security.py:94:80: E501 line too long (81 > 79 characters)
+app\main.py:5:80: E501 line too long (87 > 79 characters)
+app\main.py:23:80: E501 line too long (84 > 79 characters)
+app\main.py:35:80: E501 line too long (84 > 79 characters)
+app\main.py:99:80: E501 line too long (83 > 79 characters)
+app\main.py:223:80: E501 line too long (84 > 79 characters)
+app\main.py:224:80: E501 line too long (82 > 79 characters)
+app\main.py:268:80: E501 line too long (88 > 79 characters)
+app\main.py:273:80: E501 line too long (81 > 79 characters)
+app\main.py:286:80: E501 line too long (91 > 79 characters)
+app\main.py:375:80: E501 line too long (86 > 79 characters)
+app\main.py:547:80: E501 line too long (85 > 79 characters)
+app\main.py:600:80: E501 line too long (82 > 79 characters)
+app\services\data_loader.py:115:80: E501 line too long (85 > 79 characters)
+app\services\data_loader.py:116:80: E501 line too long (80 > 79 characters)
+app\services\embedding_service.py:5:80: E501 line too long (94 > 79 characters)
+app\services\embedding_service.py:15:80: E501 line too long (80 > 79 characters)
+app\services\embedding_service.py:42:80: E501 line too long (80 > 79 characters)
+app\services\embedding_service.py:68:80: E501 line too long (81 > 79 characters)
+app\services\embedding_service.py:100:80: E501 line too long (85 > 79 characters)
+app\services\embedding_service.py:101:80: E501 line too long (82 > 79 characters)
+app\services\embedding_service.py:137:50: E203 whitespace before ':'
+app\services\preprocessing_service.py:7:80: E501 line too long (83 > 79 characters)
+app\services\preprocessing_service.py:19:1: F401 'typing.Tuple' imported but unused
+app\services\preprocessing_service.py:33:1: W293 blank line contains whitespace
+app\services\preprocessing_service.py:52:1: W293 blank line contains whitespace
+app\services\preprocessing_service.py:55:1: W293 blank line contains whitespace
+app\services\preprocessing_service.py:58:1: W293 blank line contains whitespace
+app\services\preprocessing_service.py:80:80: E501 line too long (86 > 79 characters)
+app\services\preprocessing_service.py:88:80: E501 line too long (86 > 79 characters)
+app\services\preprocessing_service.py:108:80: E501 line too long (89 > 79 characters)
+app\services\preprocessing_service.py:121:80: E501 line too long (89 > 79 characters)
+app\services\preprocessing_service.py:130:80: E501 line too long (80 > 79 characters)
+app\services\preprocessing_service.py:152:1: W293 blank line contains whitespace
+app\services\preprocessing_service.py:166:1: W293 blank line contains whitespace
+app\services\search_service.py:89:80: E501 line too long (84 > 79 characters)
+app\services\search_service.py:92:80: E501 line too long (82 > 79 characters)
+app\services\search_service.py:132:80: E501 line too long (80 > 79 characters)
+app\services\search_service.py:176:80: E501 line too long (86 > 79 characters)
+app\services\search_service.py:234:80: E501 line too long (84 > 79 characters)
+app\services\search_service.py:250:80: E501 line too long (80 > 79 characters)
+app\services\search_service.py:297:80: E501 line too long (80 > 79 characters)
+app\services\search_service.py:311:80: E501 line too long (89 > 79 characters)
+app\services\search_service.py:315:80: E501 line too long (86 > 79 characters)
+app\services\search_service.py:407:10: W292 no newline at end of file
+scripts\benchmark.py:5:1: E302 expected 2 blank lines, found 1
+scripts\benchmark.py:9:1: W293 blank line contains whitespace
+scripts\benchmark.py:14:1: W293 blank line contains whitespace
+scripts\benchmark.py:17:1: W293 blank line contains whitespace
+scripts\benchmark.py:21:1: W293 blank line contains whitespace
+scripts\benchmark.py:27:1: W293 blank line contains whitespace
+scripts\benchmark.py:33:1: E305 expected 2 blank lines after class or function definition, found 1
+tests\conftest.py:43:80: E501 line too long (80 > 79 characters)
+tests\test_data_loader.py:13:1: F401 'tempfile' imported but unused
+tests\test_data_loader.py:14:1: F401 'shutil' imported but unused
+tests\test_data_loader.py:15:1: F401 'pathlib.Path' imported but unused
+tests\test_data_loader.py:69:80: E501 line too long (82 > 79 characters)
+tests\test_data_loader.py:75:80: E501 line too long (82 > 79 characters)
+tests\test_data_loader.py:134:80: E501 line too long (83 > 79 characters)
+tests\test_embedding.py:56:80: E501 line too long (80 > 79 characters)
+tests\test_embedding.py:85:80: E501 line too long (80 > 79 characters)
+tests\test_embedding.py:108:80: E501 line too long (85 > 79 characters)
+tests\test_embedding.py:118:35: W292 no newline at end of file
+tests\test_integration.py:13:1: F401 'numpy as np' imported but unused
+tests\test_integration.py:16:1: F401 'unittest.mock.patch' imported but unused
+tests\test_integration.py:16:1: F401 'unittest.mock.MagicMock' imported but unused
+tests\test_integration.py:27:1: W293 blank line contains whitespace
+tests\test_integration.py:63:80: E501 line too long (87 > 79 characters)
+tests\test_integration.py:146:80: E501 line too long (83 > 79 characters)
+tests\test_preprocessing_service.py:14:1: F401 'numpy as np' imported but unused
+tests\test_preprocessing_service.py:18:1: F401 'app.core.exceptions.ImageProcessingError' imported but unused
+tests\test_search_service.py:48:1: E402 module level import not at top of file
+tests\test_search_service.py:138:80: E501 line too long (80 > 79 characters)
+tests\test_search_service.py:238:80: E501 line too long (81 > 79 characters)

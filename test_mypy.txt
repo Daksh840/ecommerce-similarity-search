@@ -1,0 +1,57 @@
+app\core\exceptions.py:19: error: Incompatible default for parameter "detail" (default has type "None", parameter has type "str")  [assignment]
+app\core\exceptions.py:19: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+app\core\exceptions.py:19: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+app\services\search_service.py:34: error: Skipping analyzing "faiss": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+app\services\search_service.py:49: error: Incompatible default for parameter "index_path" (default has type "None", parameter has type "str")  [assignment]
+app\services\search_service.py:49: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+app\services\search_service.py:49: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+app\services\search_service.py:112: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:115: error: "None" has no attribute "add"  [attr-defined]
+app\services\search_service.py:124: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:142: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:160: error: "None" has no attribute "search"  [attr-defined]
+app\services\search_service.py:188: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:200: error: "None" has no attribute "search"  [attr-defined]
+app\services\search_service.py:218: error: Incompatible default for parameter "path" (default has type "None", parameter has type "str")  [assignment]
+app\services\search_service.py:218: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+app\services\search_service.py:218: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+app\services\search_service.py:259: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:280: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:284: error: Incompatible default for parameter "path" (default has type "None", parameter has type "str")  [assignment]
+app\services\search_service.py:284: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+app\services\search_service.py:284: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+app\services\search_service.py:341: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:375: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\search_service.py:406: error: "None" has no attribute "ntotal"  [attr-defined]
+app\services\embedding_service.py:25: error: Skipping analyzing "torchvision.transforms": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+app\services\embedding_service.py:25: error: Skipping analyzing "torchvision": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+app\services\embedding_service.py:27: error: Skipping analyzing "torchvision.models": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+app\services\embedding_service.py:41: error: Incompatible default for parameter "device" (default has type "None", parameter has type "str")  [assignment]
+app\services\embedding_service.py:41: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+app\services\embedding_service.py:41: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+app\services\data_loader.py:25: error: Library stubs not installed for "pandas"  [import-untyped]
+app\services\data_loader.py:25: note: Hint: "python3 -m pip install pandas-stubs"
+app\services\data_loader.py:25: note: (or run "mypy --install-types" to install all missing stub packages)
+app\services\data_loader.py:25: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+app\services\data_loader.py:26: error: Library stubs not installed for "requests"  [import-untyped]
+app\services\data_loader.py:26: note: Hint: "python3 -m pip install types-requests"
+app\services\data_loader.py:28: error: Library stubs not installed for "tqdm"  [import-untyped]
+app\services\data_loader.py:28: note: Hint: "python3 -m pip install types-tqdm"
+app\main.py:33: error: Skipping analyzing "faiss": module is installed, but missing library stubs or py.typed marker  [import-untyped]
+app\main.py:132: error: "None" has no attribute "ntotal"  [attr-defined]
+app\main.py:139: error: "None" has no attribute "ntotal"  [attr-defined]
+app\main.py:265: error: "None" has no attribute "ntotal"  [attr-defined]
+app\main.py:279: error: Item "None" of "ImagePreprocessor | None" has no attribute "validate_and_process"  [union-attr]
+app\main.py:282: error: Item "None" of "EmbeddingExtractor | None" has no attribute "extract_single"  [union-attr]
+app\main.py:308: error: "None" has no attribute "ntotal"  [attr-defined]
+app\main.py:345: error: "None" has no attribute "ntotal"  [attr-defined]
+app\main.py:362: error: Argument 1 to "model_validate_json" of "BaseModel" has incompatible type "Awaitable[Any] | Any"; expected "str | bytes | bytearray"  [arg-type]
+app\main.py:392: error: Item "None" of "ImagePreprocessor | None" has no attribute "validate_and_process"  [union-attr]
+app\main.py:395: error: Item "None" of "EmbeddingExtractor | None" has no attribute "extract_single"  [union-attr]
+app\main.py:418: error: "None" has no attribute "ntotal"  [attr-defined]
+app\main.py:534: error: Item "None" of "SimilaritySearch | None" has no attribute "index"  [union-attr]
+app\main.py:534: error: Item "None" of "Any | None" has no attribute "ntotal"  [union-attr]
+app\main.py:535: error: Item "None" of "SimilaritySearch | None" has no attribute "get_stats"  [union-attr]
+app\main.py:579: error: "None" has no attribute "ntotal"  [attr-defined]
+app\main.py:633: error: "None" has no attribute "ntotal"  [attr-defined]
+Found 41 errors in 5 files (checked 15 source files)

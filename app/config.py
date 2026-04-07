@@ -14,7 +14,6 @@ Use @lru_cache to create a singleton — avoids re-parsing env vars on every req
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field
 from pydantic_settings import BaseSettings
 
 

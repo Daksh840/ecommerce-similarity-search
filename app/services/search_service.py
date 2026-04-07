@@ -29,7 +29,7 @@ import logging
 import tempfile
 import shutil
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 import faiss
 import numpy as np
@@ -46,7 +46,7 @@ class SimilaritySearch:
     callers must synchronize externally.
     """
 
-    def __init__(self, dimension: int = 2048, index_path: str = None):
+    def __init__(self, dimension: int = 2048, index_path: Optional[str] = None):
         self.dimension = dimension
         self.index_path = Path(index_path) if index_path else None
         self.index = None

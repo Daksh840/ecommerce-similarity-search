@@ -11,11 +11,10 @@ Covers:
 
 import io
 import pytest
-import numpy as np
 from PIL import Image
 
 from app.services.preprocessing_service import ImagePreprocessor
-from app.core.exceptions import ImageValidationError, ImageProcessingError
+from app.core.exceptions import ImageValidationError
 
 
 @pytest.fixture

@@ -10,10 +10,8 @@ but verify the entire system works end-to-end.
 """
 
 import io
-import numpy as np
 import pytest
 from PIL import Image
-from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
 
 

@@ -13,10 +13,12 @@ domain exceptions into HTTP responses.
 """
 
 
+from typing import Optional
+
 class AppException(Exception):
     """Base exception for all application errors."""
 
-    def __init__(self, message: str, detail: str = None):
+    def __init__(self, message: str, detail: Optional[str] = None):
         self.message = message
         self.detail = detail
         super().__init__(self.message)
