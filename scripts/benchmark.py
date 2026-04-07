@@ -8,7 +8,7 @@ def benchmark_search(index_size=10000, queries=100):
     index = SimilaritySearch(dimension=dim)
     
     # Generate random vectors
-    vectors = np.random.random((index_size, dim)).astype('float32')
+    vectors = np.random.randn(index_size, dim).astype('float32')
     # Normalize
     vectors = vectors / np.linalg.norm(vectors, axis=1, keepdims=True)
     
@@ -16,7 +16,7 @@ def benchmark_search(index_size=10000, queries=100):
     index.add_vectors(vectors, metadata)
     
     # Benchmark
-    query = np.random.random((1, dim)).astype('float32')
+    query = np.random.randn(1, dim).astype('float32')
     query = query / np.linalg.norm(query, axis=1, keepdims=True)
     
     latencies = []

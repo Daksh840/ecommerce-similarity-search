@@ -6,6 +6,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.135-green)
 ![FAISS](https://img.shields.io/badge/FAISS-1.13-orange)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.11-red)
+[![CI](https://github.com/Daksh840/ecommerce-similarity-search/actions/workflows/ci.yml/badge.svg)](https://github.com/Daksh840/ecommerce-similarity-search/actions/workflows/ci.yml)
 
 ---
 
@@ -306,7 +307,7 @@ Benchmarked on CPU (Intel i7, 16GB RAM):
 |--------|-------|
 | Embedding extraction | ~60-100ms per image |
 | FAISS search (200 vectors) | <1ms |
-| FAISS search (50k vectors) | ~5ms |
+| FAISS search (10k vectors) | ~4.77ms |
 | End-to-end API latency | ~70-120ms |
 | Index memory (200 products) | ~1.6 MB |
 
